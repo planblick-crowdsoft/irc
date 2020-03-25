@@ -12,8 +12,8 @@ EXPOSE ${PORT}
 ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["thelounge", "start"]
 
-COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
-COPY config /var/opt/thelounge
+COPY ./docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+COPY ./config /var/opt/thelounge
 
 # Install thelounge.
 ARG THELOUNGE_VERSION=4.1.0
