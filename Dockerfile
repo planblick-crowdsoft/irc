@@ -9,7 +9,7 @@ VOLUME "${THELOUNGE_HOME}"
 ENV PORT 9000
 EXPOSE ${PORT}
 
-ENTRYPOINT ["docker-entrypoint.sh"]
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 CMD ["thelounge", "start"]
 
 COPY ./docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
