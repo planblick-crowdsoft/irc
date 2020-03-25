@@ -1,0 +1,63 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: catbox
+spec:
+  selector:
+    matchLabels:
+      app: catbox
+  serviceName: catbox
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: catbox
+    spec:
+      containers:
+        - name: catbox
+          image: inspircd/inspircd-docker
+          env:
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+          ports:
+            - containerPort: 6667
+            - containerPort: 7000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: catbox-0
+spec:
+  ports:
+    - port: 6667
+  selector:
+    statefulset.kubernetes.io/pod-name: catbox-0
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: catbox-1
+spec:
+  ports:
+    - port: 6667
+  selector:
+    statefulset.kubernetes.io/pod-name: catbox-1
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: catbox
+spec:
+  ports:
+    - port: 6667
+  selector:
+    app: catbox
+  type: LoadBalancer
+  externalIPs:
+    - 62.138.8.14
+  loadBalancerIP: 62.138.8.14
+  externalTrafficPolicy: Local

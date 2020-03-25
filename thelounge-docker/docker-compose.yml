@@ -1,0 +1,8 @@
+version: '2'
+services:
+  thelounge:
+    build: .
+    container_name: thelounge
+    ports:
+      - "9000:9000"
+    restart: always
