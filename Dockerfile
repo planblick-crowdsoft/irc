@@ -9,16 +9,16 @@ VOLUME "${THELOUNGE_HOME}"
 ENV PORT 9000
 EXPOSE ${PORT}
 
-COPY ./docker-entrypoint.sh /tmp/docker-entrypoint.sh
+#COPY ./docker-entrypoint.sh /tmp/docker-entrypoint.sh
 COPY ./config /var/opt/thelounge
-CMD chmod 777 /tmp/docker-entrypoint.sh
+#CMD chmod 777 /tmp/docker-entrypoint.sh
 
 # Install thelounge.
 ARG THELOUNGE_VERSION=4.1.0
 RUN yarn --non-interactive --frozen-lockfile global add thelounge@${THELOUNGE_VERSION} && \
     yarn --non-interactive cache clean
 
-ENTRYPOINT ["/tmp/docker-entrypoint.sh"]
+#ENTRYPOINT ["/tmp/docker-entrypoint.sh"]
 CMD ["thelounge", "start"]
 
 
