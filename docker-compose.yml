@@ -1,13 +1,8 @@
----
-version: "2"
+version: '2'
 services:
   thelounge:
-    image: linuxserver/thelounge
+    build: .
     container_name: thelounge
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Europe/London
     ports:
-      - 9000:9000
-    restart: unless-stopped
+      - "9000:9000"
+    restart: always
