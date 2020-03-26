@@ -170,7 +170,7 @@ conf.quit_message = "http://www.planBLICK.com/ - Oldie but Goldie Client";
 
 // Default settings for the client. These may be changed in the browser
 conf.client = {
-    server: 'catbox.shared.svc',
+    server: 'it-fullservice.eu',
     port:    6667,
     ssl:     false,
     channel: '#retro',
