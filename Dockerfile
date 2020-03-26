@@ -1,24 +1,14 @@
 FROM node:12
+RUN cd /opt && git clone https://github.com/prawnsalad/KiwiIRC.git
 
-ENV NODE_ENV production
+WORKDIR /opt/KiwiIRC
 
-ENV THELOUNGE_HOME "/var/opt/thelounge"
-VOLUME "${THELOUNGE_HOME}"
+EXPOSE 7778
 
-# Expose HTTP.
-ENV PORT 9000
-EXPOSE ${PORT}
+RUN npm install
 
-#COPY ./docker-entrypoint.sh /tmp/docker-entrypoint.sh
-COPY ./config /var/opt/thelounge
-#CMD chmod 777 /tmp/docker-entrypoint.sh
+COPY config.js /opt/KiwiIRC
 
-# Install thelounge.
-ARG THELOUNGE_VERSION=4.1.0
-RUN yarn --non-interactive --frozen-lockfile global add thelounge@${THELOUNGE_VERSION} && \
-    yarn --non-interactive cache clean
+RUN ./kiwi build
 
-#ENTRYPOINT ["/tmp/docker-entrypoint.sh"]
-CMD ["thelounge", "start"]
-
-
+ENTRYPOINT ["/opt/KiwiIRC/kiwi","-f","start"]
