@@ -165,19 +165,19 @@ conf.socks_proxy.pass = null;
 
 
 // Default quit message
-conf.quit_message = "http://www.kiwiirc.com/ - A hand-crafted IRC client";
+conf.quit_message = "http://www.planBLICK.com/ - Oldie but Goldie Client";
 
 
 // Default settings for the client. These may be changed in the browser
 conf.client = {
-    server: 'it-fullservice.eu',
+    server: 'catbox.shared.svc',
     port:    6667,
     ssl:     false,
     channel: '#retro',
     channel_key: '',
     nick:    'gast_?',
     settings: {
-        theme: 'relaxed',
+        theme: 'cli',
         channel_list_style: 'tabs',
         scrollback: 250,
         show_joins_parts: true,
@@ -187,7 +187,7 @@ conf.client = {
         show_emoticons: true,
         count_all_activity: true
     },
-    window_title: 'Kiwi IRC'
+    window_title: 'planBLICK IRC'
 };
 
 // List of themes available for the user to choose from

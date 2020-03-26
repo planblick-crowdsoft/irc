@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: catbox
-          image: inspircd/inspircd-docker
+          image: planblick2/inspircd
           env:
             - name: POD_NAME
               valueFrom:
