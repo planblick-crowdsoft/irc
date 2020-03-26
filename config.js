@@ -126,7 +126,7 @@ conf.reject_unauthorised_certificates = false;
  */
 
 // Whitelisted HTTP proxies in CIDR format
-conf.http_proxies = ["127.0.0.1/32"];
+conf.http_proxies = ["127.0.0.1/32", "10.128.0.1/32"];
 
 // Header that contains the real-ip from the HTTP proxy
 conf.http_proxy_ip_header = "x-forwarded-for";
